@@ -3,7 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       app = express().use(bodyParser.json());
 
-app.listen(process.env.PORT || 4001, () => console.log('Webhook ouvindo'));
+app.listen(process.env.HTTPS_PORT || 4001, () => console.log('Webhook ouvindo'));
 
 app.post('/webhook', (req, res) => {  
     let body = req.body;
