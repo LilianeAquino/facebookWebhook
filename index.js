@@ -5,16 +5,17 @@ const express = require('express'),
 
 app.listen(process.env.PORT || 4001, () => console.log('Webhook ouvindo'));
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', (req, res) => {  
     let body = req.body;
-    if(body.object == 'page'){
-        body.entry.foreach((entry)=> {
-            let webhook_event = entry.messaging[0];
-            console.log(webhook_event);
-        });
-        res.status(200).send('EVENT_RECEIVED');
+
+    if (body.object === 'page') {
+      body.entry.forEach(function(entry) {
+        let webhook_event = entry.messaging[0];
+        console.log(webhook_event);
+      });
+      res.status(200).send('EVENT_RECEIVED');
     }else {
-        res.sendStatus(404);
+      res.sendStatus(404);
     }
 });
 
